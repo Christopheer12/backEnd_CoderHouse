@@ -9,7 +9,15 @@ class Contenedor{
         
         try{
             let contenido = await fs.promises.readFile(`./${this.name}`,`utf-8`)
-            console.log(contenido)
+            
+            let contendijson =JSON.parse(contenido)
+            let ultimoIndice = contendijson.length -1
+            let ultimoId = contendijson[ultimoIndice].id
+            informacion.id = ultimoId + 1
+            let id = informacion.id
+            contendijson.push(informacion)
+            await fs.promises.writeFile(`./${this.name}`,JSON.stringify(contendijson) )
+            console.log(contendijson)
 
         }
         catch(error){
