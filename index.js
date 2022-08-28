@@ -5,10 +5,18 @@ class Contenedor{
         this.name =name;
     }
 
-    save(informacion){
-        let id
+    async save(informacion){
+        
+        try{
+            let contenido = await fs.promises.readFile(`./${this.name}`,`utf-8`)
+            console.log(contenido)
 
-        return id
+        }
+        catch(error){
+            console.log(error)
+        }
+
+       
     }
     getById(id){
 
@@ -25,3 +33,12 @@ class Contenedor{
     }
 }
 
+let contenedor = new Contenedor("Productos.json")
+
+let informacionNueva ={
+    "title": "Tijera",
+    "price": 183.45,
+    "id":4
+}
+
+contenedor.save(informacionNueva)
