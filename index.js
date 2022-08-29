@@ -59,6 +59,13 @@ class Contenedor{
         try{
             let contenido = await fs.promises.readFile(`./${this.name}`, `utf-8`)
             let contendijson = JSON.parse(contenido)
+            let nuevoContendido = contendijson.filter(
+                (element => element.id !== id)
+            )
+            await fs.promises.writeFile(
+                `./${this.name}`,JSON.stringify(nuevoContendido)
+
+            )
             
         }
         catch(error){
@@ -87,6 +94,10 @@ let informacionNueva ={
 /* contenedor.getById(1).then(result=>{
     console.log(result)
 }) */
-contenedor.getAll().then(result=>{
+/* contenedor.getAll().then(result=>{
+    console.log(result)
+}) */
+
+contenedor.deleteById(2).then(result=>{
     console.log(result)
 })
