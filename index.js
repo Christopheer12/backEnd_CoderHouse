@@ -44,9 +44,16 @@ class Contenedor{
         
 
     }
-    getAll(){
-        let objeto
-        return objeto
+    async getAll(){
+       
+        try{
+            let contenido = await fs.promises.readFile(`./${this.name}`, `utf-8`)
+            let contendijson = JSON.parse(contenido)
+            return contendijson
+        }
+        catch(error){
+            console.log("error getAll")
+        }
     }
     deleteById(id){
 
@@ -71,3 +78,6 @@ let informacionNueva ={
 /* contenedor.getById(1).then(result=>{
     console.log(result)
 }) */
+contenedor.getAll().then(result=>{
+    console.log(result)
+})
