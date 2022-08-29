@@ -55,7 +55,8 @@ class Contenedor{
             console.log("error getAll")
         }
     }
-    deleteById(id){
+    async deleteById(id){
+        
 
     }
     deleteAll(){
