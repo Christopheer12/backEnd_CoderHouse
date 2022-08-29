@@ -9,7 +9,6 @@ class Contenedor{
         
         try{
             let contenido = await fs.promises.readFile(`./${this.name}`,`utf-8`)
-            
             let contendijson =JSON.parse(contenido)
             let ultimoIndice = contendijson.length -1
             let ultimoId = contendijson[ultimoIndice].id
@@ -17,8 +16,7 @@ class Contenedor{
             let id = informacion.id
             contendijson.push(informacion)
             await fs.promises.writeFile(`./${this.name}`,JSON.stringify(contendijson) )
-            console.log(contendijson)
-
+            return id
         }
         catch(error){
             console.log(error)
@@ -26,7 +24,24 @@ class Contenedor{
 
        
     }
-    getById(id){
+
+    async getById(id){
+        try{
+            let contenido = await fs.promises.readFile(`./${this.name}`, `utf-8`)
+            let contendijson = JSON.parse(contenido)
+            let contenidoExtraidoDelArray 
+            contendijson.forEach(element =>{
+                if(element.id == id){
+                    contenidoExtraidoDelArray = element
+                }
+            });
+            return contenidoExtraidoDelArray
+            
+        }
+        catch(error){
+            console-log("error getById")
+        }
+        
 
     }
     getAll(){
@@ -49,4 +64,10 @@ let informacionNueva ={
     "id":4
 }
 
-contenedor.save(informacionNueva)
+/* contenedor.save(informacionNueva).then(respuestaDePromesa=>{
+    console.log(respuestaDePromesa)
+}) */
+
+/* contenedor.getById(1).then(result=>{
+    console.log(result)
+}) */
