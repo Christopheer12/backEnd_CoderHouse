@@ -69,12 +69,20 @@ class Contenedor{
             
         }
         catch(error){
-            console-log("error delteById")
+            console.log("error delteById")
         }
         
 
     }
    async deleteAll(){
+    try{
+        await fs.promises.writeFile(`./${this.name}`,JSON.stringify([]))
+        
+    }
+    catch(error){
+        console.log("error deleteAll")
+    }
+    
 
     }
 }
@@ -101,3 +109,6 @@ let informacionNueva ={
 /* contenedor.deleteById(2).then(result=>{
     console.log(result)
 }) */
+contenedor.deleteAll().then(result=>{
+    console.log(result)
+})
