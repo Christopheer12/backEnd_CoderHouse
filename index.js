@@ -56,6 +56,14 @@ class Contenedor{
         }
     }
     async deleteById(id){
+        try{
+            let contenido = await fs.promises.readFile(`./${this.name}`, `utf-8`)
+            let contendijson = JSON.parse(contenido)
+            
+        }
+        catch(error){
+            console-log("error delteById")
+        }
         
 
     }
