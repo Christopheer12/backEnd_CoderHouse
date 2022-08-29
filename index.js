@@ -98,6 +98,6 @@ let informacionNueva ={
     console.log(result)
 }) */
 
-contenedor.deleteById(2).then(result=>{
+/* contenedor.deleteById(2).then(result=>{
     console.log(result)
-})
+}) */
