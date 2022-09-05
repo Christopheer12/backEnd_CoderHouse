@@ -1,10 +1,17 @@
-const express = require('express');
-const PORT = process.env.PORT || 8080;
-const app = express();
+class Usuario{
+    constructor(nombre, apellido, libros, mascostas){
+        this.nombre = nombre//string
+        this.apellido = apellido,//string
+        this.libros =libros,//object
+        this.mascostas =mascostas//string
+    }
 
-const connectedServer = app.listen(PORT, ()=>{
-    console.log(`el servidor usa el puerto ${PORT}`)
-});
-connectedServer.on('error',(error)=>{
-    console.log(error.message)
-})
+}
+const persona1 = new Usuario("Bojack","HorseMan",[{
+    libro:"Secretaria",
+    autor:"Diane Nguyen",
+},{
+    libro:"One Trick Pony",
+    autor:"Diane Nguyen"
+},],"Todd")
+console.log(persona1)
