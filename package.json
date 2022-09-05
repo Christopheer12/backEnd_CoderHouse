@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/Christopheer12/backEnd_CoderHouse/issues"
   },
-  "homepage": "https://github.com/Christopheer12/backEnd_CoderHouse#readme"
+  "homepage": "https://github.com/Christopheer12/backEnd_CoderHouse#readme",
+  "dependencies": {
+    "express": "^4.18.1"
+  }
 }

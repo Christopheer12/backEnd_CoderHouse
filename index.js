@@ -1,4 +1,5 @@
 const http = require('http');
+const port = 8080;
 
 //createServer               request  response /// Contro + c finaliza el server
 const server = http.createServer((req,res)=>{
@@ -17,4 +18,4 @@ res.end();
 });
 
 //listen
-server.listen(8080);   
+server.listen(port);   
