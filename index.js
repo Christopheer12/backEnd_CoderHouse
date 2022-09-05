@@ -1,21 +1,10 @@
-const http = require('http');
-const port = 8080;
+const express = require('express');
+const PORT = process.env.PORT || 8080;
+const app = express();
 
-//createServer               request  response /// Contro + c finaliza el server
-const server = http.createServer((req,res)=>{
-    if(req.url ==='/'){
-        res.end('soy la pagina de inicio')
-    }
-    else if(req.url==='/login'){
-        res.end('soy la pagina de login')
-    }
-    else{
-        res.write('Error 404 Pagina. no econtrada');
-    }
-
-res.end();    
-
+const connectedServer = app.listen(PORT, ()=>{
+    console.log(`el servidor usa el puerto ${PORT}`)
 });
-
-//listen
-server.listen(port);   
+connectedServer.on('error',(error)=>{
+    console.log(error.message)
+})
