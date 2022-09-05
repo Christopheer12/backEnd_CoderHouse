@@ -3,7 +3,7 @@ const PORT = process.env.PORT || 8080;
 const app = express();
 
 app.get('/',(req, res)=>{
-    res.send('Esto es elñ inicio de la pagina')
+    res.send('Esto es el inicio de la pagina, para arancar nodemon se usar : npm rum start-dev ')
 })
 
 const connectedServer = app.listen(PORT, ()=>{
