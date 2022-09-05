@@ -111,4 +111,4 @@ let informacionNueva ={
 }) */
 contenedor.deleteAll().then(result=>{
     console.log(result)
-})
+}) 
