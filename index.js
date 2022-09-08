@@ -1,18 +1,28 @@
 // https://glitch.com/edit/#!/expresscoderhouse?path=server.js%3A21%3A2
  
 const express = require('express');
+const fs = require('fs')
+
+const productos =JSON.parse(fs.readFileSync('./Productos.json','utf-8'))
 const PORT = process.env.PORT || 8080;
 const app = express();
 
-app.get('/',(req, res)=>{
+app.get('/',(req, res, next)=>{
     res.send(`<h1>Esto es el inicio de la pagina, para arancar nodemon se usar : npm rum start-dev</h1> 
     <h2>Rutas disponibles</h2>
     <li>/productos</li>
     <li>/productosRamdon</li>`)
 })
-app.get('/productos', (req,res)=>{
-    res.send('<h1>Productos</h1>')
+app.get('/productos', (req,res,next)=>{
+    res.json(productos)
 })
+
+
+
+
+
+
+
 app.get('/productosRamdon', (req,res)=>{
     res.send('<h1>Ramdon</h1>')
 })
