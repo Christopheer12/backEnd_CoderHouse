@@ -10,12 +10,12 @@ const app = express();
 app.get('/',(req, res, next)=>{
     res.send(`<h1>Esto es el inicio de la pagina, para arancar nodemon se usar : npm rum start-dev</h1> 
     <h2>Rutas disponibles</h2>
-    <li>/productos</li>
-    <li>/productosRamdon</li>`)
+    <li>/productos (?price= y el precio a colocar, ejemplo /productos?price=150)</li>
+    <li>/productos/:id</li>`)
 })
 app.get('/productos', (req,res,next)=>{
     console.log(req.query)
-    const{price = 0 } = req.query;
+    const{price = 99999999 } = req.query;
     
     const priceNumber =+(price)
     const resProductos = productos.filter((producto)=> producto.price <priceNumber
@@ -30,9 +30,15 @@ app.get('/productos', (req,res,next)=>{
 
 
 
-app.get('/productosRamdon', (req,res)=>{
-    res.send('<h1>Ramdon</h1>')
+app.get('/productos/:id', (req,res,next)=>{
+    console.log(req.params)
+    const{id} =req.params
+    const producto = productos.find((producto) => producto.id===+(id))
+res.json(producto)
 })
+
+
+
 app.get('*',(req,res)=>{
    res.status(404).send('<h1>ERROR 404</h1><h2>¡ESTO ES REAL HIJO! </h2>')
 })
