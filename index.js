@@ -14,7 +14,14 @@ app.get('/',(req, res, next)=>{
     <li>/productosRamdon</li>`)
 })
 app.get('/productos', (req,res,next)=>{
-    res.json(productos)
+    console.log(req.query)
+    const{price = 0 } = req.query;
+    
+    const priceNumber =+(price)
+    const resProductos = productos.filter((producto)=> producto.price <priceNumber
+);
+    res.json(resProductos)
+
 })
 
 
