@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>handlebars</title>
+  </head>
+
+  <body>
+    <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+    <script>
+      // compile the template
+      const template = Handlebars.compile(`
+  <h1>hola me llamoi {{name}}</h1>
+  <li>mi apellido es {{apellido}}</li>
+<li>mi mi comida favorita es{{comida}}</li>
+<li>mi lenguaje es {{lenguaje}}</li>
+`);
+
+      // execute the compiled template and print the output to the console
+      const html = template({ name: "cristian!", apellido: "Guerrero", comida:"lassaña", lenguaje:"javasscript" });
+      console.log(html)
+    </script>
+  </body>
+</html>
