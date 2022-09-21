@@ -1,26 +1,27 @@
-const express = require('express');
- const fs = require('fs/promises');
- const path = require('path')
- const{engine}= require('express-handlebars')
- const Productos = require('./model/productos')
- const PORT = 8080
+const path = require('path')
+const rutasApi = require('./routers/index')
+const express = require('express')
 
- const app = express();
- const productos = new Productos()
+const app= express()
+const PORT = process.env.PORT || 8080
+
+app.set ('views', './views')
+app.set('view engine', 'pug')
+
+app.use(express.static(path.resolve(__dirname,'./public')))
+
+app.get('/', (req,res)=>{
+  res.render('index')
+})
+
+/* app.user ('/api', rutasApi)
+ */
 
 
+const connectedSever = app.listen(PORT,()=>{
+  console.log (`servidorr activo en ${PORT}`)
+})
 
- app.engine('hbs', engine({
-    extname: 'hbs',
-    defaultLayout: 'main.hbs',
-    layoutsDir: path.resolve(__dirname, './views/layouts'),
-    partialsDir: path.resolve(__dirname,'./views/partials')
- }))
-
- app.set('views','./views')
- app.set ('view engine','hbs')
- app.get('/', (req,res)=>{
-   res.render('index',{mostrarProductos:true, productos:productos.getAll()})
- })
-
- app.listen(PORT,()=>console.log ('puesto listo en', PORT))
+connectedSever.on ('error', (error)=>{
+  console.log(error.message)
+})
