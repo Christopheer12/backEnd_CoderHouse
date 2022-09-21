@@ -1,24 +1,5 @@
--const saludo = "hola hermoso y sensual mundo terraqueo"
--
-  const arreglo =[
-    1,
-    2,
-    3,
-    4
-  ]
-
-doctype html
-html(lang="en")
-  head
-    meta(charset="UTF-8")
-    meta(http-equiv="X-UA-Compatible", content="IE=edge")
-    meta(name="viewport", content="width=device-width, initial-scale=1.0")
-    title Document
-  body 
-    h1(style="color: green;") hola a todos 
-
-    p=saludo 
-    if showList
-      ul    
-      each item in productos
-        li=`Item${item}`
+html 
+  head 
+    title="mi plantilla en pug"
+body 
+  block main 
