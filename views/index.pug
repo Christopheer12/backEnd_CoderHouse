@@ -16,7 +16,9 @@ html(lang="en")
     title Document
   body 
     h1(style="color: green;") hola a todos 
+
     p=saludo 
-    ul    
-      each item in arreglo
-        li=`Item${item}` 
+    if showList
+      ul    
+      each item in productos
+        li=`Item${item}`
