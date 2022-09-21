@@ -1,3 +1,12 @@
+-const saludo = "hola hermoso y sensual mundo terraqueo"
+-
+  const arreglo =[
+    1,
+    2,
+    3,
+    4
+  ]
+
 doctype html
 html(lang="en")
   head
@@ -6,4 +15,8 @@ html(lang="en")
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
     title Document
   body 
-    h1 hola a todos 
+    h1(style="color: green;") hola a todos 
+    p=saludo 
+    ul    
+      each item in arreglo
+        li=`Item${item}` 
