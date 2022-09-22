@@ -14,7 +14,11 @@ app.set('view engine', 'pug')
 app.use(express.static(path.resolve(__dirname,'./public')))
 
 app.get('/', (req,res)=>{
-  res.render('main',{showList:true, productos:productos.getAll()})
+  res.render('index',{showList:true, productos:productos.getAll()})
+})
+
+app.get('/datos', (req,res)=>{
+  res.render('main',req.query)
 })
 
 /* app.user ('/api', rutasApi)

@@ -1,4 +1,12 @@
-extends ./index
+extends ./layout
 
 block main
-  h1="hola starts"
+  -const estilo = "width:50%; heigth: 100px"
+  h1(style="color:blue; text-align-center")!= titulo 
+  p="http://localhost:8080/datos?min=10&nivel=15&max=20&titulo=<i>Medidor</i>"
+  div(style="width:70%;margin:0 auto;text-align: center;")
+    span=min
+    meter(value=nivel, min=min, max=max style?estilo)
+    span=max 
+
+    
