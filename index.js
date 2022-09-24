@@ -9,18 +9,21 @@ const productos = new Productos()
 
 
 app.set ('views', './views')
-app.set('view engine', 'pug')
+app.set('view engine', 'ejs')
 
 app.use(express.static(path.resolve(__dirname,'./public')))
 
-app.get('/', (req,res)=>{
+/* app.get('/', (req,res)=>{
   res.render('index',{showList:true, productos:productos.getAll()})
-})
+}) */
 
 app.get('/datos', (req,res)=>{
   res.render('main',req.query)
 })
 
+app.get('/ejs',(req,res)=>{
+  res.render('index',{listaDeProductos: false, productos:productos.getAll()})
+});
 /* app.user ('/api', rutasApi)
  */
 
