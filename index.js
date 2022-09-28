@@ -21,6 +21,7 @@ app.use(express.urlencoded({ extended:false}))
   res.render('main',req.query)
 }) */
 
+
 app.get('/',(req,res)=>{
   res.render('index',{listaDeProductos: false, productos:productos.getAll()})
 });
