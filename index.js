@@ -16,5 +16,7 @@ httpServer.listen(PORT,()=>{
 const io = new SocketServer(httpServer)
 io.on('connection',(socket)=>{
     console.log("Nuevo usuario conectado")
-    socket.emit("server-message","enviado desde el servidor")
+    socket.on('message',(data)=>{
+        io.emit('server-message',(data))
+    })
 })
