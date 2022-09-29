@@ -22,28 +22,16 @@ app.use(express.urlencoded({ extended:false}))
 }) */
 
 
+
 app.get('/',(req,res)=>{
   res.render('index',{listaDeProductos: false, productos:productos.getAll()})
 });
 
-app.post('/',(res,req)=>{
+app.post('/',(req,res)=>{
+  console.log(req.body)
   productos.save(req.body)
   res.redirect('/')
 })
-
-
-
-
-
-
-
-
-
-
-
-
-/* app.user ('/api', rutasApi)
- */
 
 
 const connectedSever = app.listen(PORT,()=>{
