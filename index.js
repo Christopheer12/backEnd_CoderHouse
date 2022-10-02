@@ -1,22 +1,35 @@
 const express = require('express')
 const{Server: HttpServer}= require('http')
 const{Server: SocketServer}= require('socket.io')
-
 const PORT = process.env.PORT || 8080;
 const app= express();
 
+const httpServer = new HttpServer(app)
+const io = new SocketServer(httpServer)
+
+
+const messages=[
+    {author:"Juan",text:"Hola, ¿que tal?"},
+    {author:"Pedro",text:"Muy bien, ¿y vos?"},
+    {author:"Ana",text:"Genial"}
+]
+
+
+//middlewares
 app.use(express.static("./public"))
 
-const httpServer = new HttpServer(app)
+
+//Routes
+
+//Listen
 
 httpServer.listen(PORT,()=>{
-    console.log(`Puesto ${PORT} activo`)
+    console.log("Server on in port",PORT)
 })
 
-const io = new SocketServer(httpServer)
+//Socket Events
 io.on('connection',(socket)=>{
-    console.log("Nuevo usuario conectado")
-    socket.on('message',(data)=>{
-        io.emit('server-message',(data))
-    })
+console.log("new client connection")
+console.log(socket.id)
+socket.emit('messages',[...messages])
 })

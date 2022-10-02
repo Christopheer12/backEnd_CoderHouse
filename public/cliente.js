@@ -1,11 +1,17 @@
 const socket =io()
 
-const input = document.querySelector("#chat-input")
-input.addEventListener('input',()=>{
-    socket.emit('message',input.value)
-})
-
-
-socket.on('server-message',(data)=>{
-    document.querySelector("#chat-box-message").innerHTML=data
+const chat = document.getElementById("chat")
+socket.on('messages',(data)=>{
+  console.log(data)
+  const html =data.map((message)=>{
+    return`
+    <span>
+    <strong>
+    ${message.author}
+    </strong>
+    ${message.text}
+    </span>`
+  }).join("\n")
+  console.log(html)
+    chat.innerHTML ="<h3>Jorge</h3>"
 })
