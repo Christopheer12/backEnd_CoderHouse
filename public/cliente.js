@@ -10,8 +10,8 @@ socket.on('messages',(data)=>{
     ${message.author}
     </strong>
     ${message.text}
-    </span>`
+    </span><br>`
   }).join("\n")
   console.log(html)
-    chat.innerHTML ="<h3>Jorge</h3>"
+    chat.innerHTML =html
 })
