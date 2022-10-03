@@ -1,35 +1,51 @@
-const express = require('express')
-const{Server: HttpServer}= require('http')
-const{Server: SocketServer}= require('socket.io')
+const express = require("express");
+const { Server: HttpServer } = require("http");
+const { Server: SocketServer } = require("socket.io");
 const PORT = process.env.PORT || 8080;
-const app= express();
+const app = express();
 
-const httpServer = new HttpServer(app)
-const io = new SocketServer(httpServer)
+const httpServer = new HttpServer(app);
+const io = new SocketServer(httpServer);
 
-
-const messages=[
-    {author:"Juan",text:"Hola, ¿que tal?"},
-    {author:"Pedro",text:"Muy bien, ¿y vos?"},
-    {author:"Ana",text:"Genial"}
-]
-
+const messages = [];
+const users = [];
 
 //middlewares
-app.use(express.static("./public"))
-
+app.use(express.static("./public"));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
 //Routes
+app.get("/chat", (req, res) => {
+  console.log(users);
+  res.sendFile(__dirname + "/public/chat.html");
+});
+
+app.post("/login", (req, res) => {
+  const { username } = req.body;
+  if (users.find(user => user.username === username)) {
+    return res.send("username already taken");
+  }
+  res.redirect(`/chat?username=${username}`);
+});
 
 //Listen
 
-httpServer.listen(PORT,()=>{
-    console.log("Server on in port",PORT)
-})
+httpServer.listen(PORT, () => {
+  console.log("Server on in port", PORT);
+});
 
 //Socket Events
-io.on('connection',(socket)=>{
-console.log("new client connection")
-console.log(socket.id)
-socket.emit('messages',[...messages])
-})
+io.on("connection", (socket) => {
+  console.log("new client connection");
+  socket.emit('messages',[...messages])
+
+  socket.on("join-chat",(data)=>{
+    const newUser={
+        id: socket.id,
+        username: data.username
+    }
+    users.push(newUser)
+  })
+
+});
