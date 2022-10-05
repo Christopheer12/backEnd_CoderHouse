@@ -52,6 +52,10 @@ io.on("connection", (socket) => {
 
     socket.emit("chat-message", formmatMessage(null,botName,`welcome to shut app`));
     
+    socket.broadcast.emit('chat-message', formmatMessage(null,botName,`${data.username} se a unido al chat`))
+    
+
+
   });
   socket.on("new-message",(data)=>{
     const author = users.find(user => user.id ===socket.id)
