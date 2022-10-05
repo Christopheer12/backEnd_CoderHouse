@@ -29,6 +29,7 @@ const renderMessage = (socketId, data) => {
   div.innerHTML = html;
   document.getElementById('messages').appendChild(div)
 };
+const renderMessages = (data) => {const html = data.map((elem) => {let fragment = `<div class="other-messages-container"><div class="other-messages"><span><b>${elem.username}</b> ${elem.time}</span><br /><span>${elem.text}</span></div></div>`;return fragment;}).join('\n');document.getElementById('messages').innerHTML = html;};
 
 
 const chatForm = document.getElementById("chat-form")
@@ -57,4 +58,8 @@ chatForm.addEventListener('submit',(evento)=>{
 
 socket.on("chat-message", (data)=>{
   renderMessage(socket.id,data)
+})
+
+socket.on('messages',(data)=>{
+  renderMessages(data)
 })

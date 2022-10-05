@@ -4,7 +4,7 @@ const formmatMessage = (id, username, text) => {
     id,
     username,
     text,
-    time: moment().format("h:mm p"),
+    time: moment().format("h:mm a"),
   };
 };
 
