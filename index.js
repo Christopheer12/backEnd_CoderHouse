@@ -1,7 +1,7 @@
 const express = require("express");
 const { Server: HttpServer } = require("http");
 const { Server: SocketServer } = require("socket.io");
-const formmatMessage = require("./utils/utils");
+const {formmatMessage} = require("./utils/utils");
 const PORT = process.env.PORT || 8080;
 const app = express();
 
@@ -48,8 +48,15 @@ io.on("connection", (socket) => {
       id: socket.id,
       username: data.username,
     };
+  users.push(newUser);
 
     socket.emit("chat-message", formmatMessage(null,botName,`welcome to shut app`));
-    users.push(newUser);
+    
   });
+  socket.on("new-message",(data)=>{
+    const author = users.find(user => user.id ===socket.id)
+    const newMessage = formmatMessage(socket.id, author.username,data)
+    messages.push(newMessage)
+    io.emit('chat-message', newMessage)
+  })
 });
