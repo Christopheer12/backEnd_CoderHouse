@@ -48,12 +48,3 @@ connectedServer.on('error',()=>{
 io.on('connection',()=>{
   console.log("se conecto nuevo usuario")
 })
-
-/* 
-const connectedSever = app.listen(PORT,()=>{
-  console.log (`servidorr activo en ${PORT}`)
-}) */
-
-/* connectedSever.on ('error', (error)=>{
-  console.log(error.message)
-}) */
