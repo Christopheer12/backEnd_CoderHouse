@@ -1,2 +1,0 @@
-1.poner el index.js en la raiz de esta carpeta
-2.poner chat.html, index.html,style.css y main.js en la capeta public
