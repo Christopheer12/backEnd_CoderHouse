@@ -43,8 +43,18 @@ connectedServer.on('error',()=>{
   console.log("errorrr pez")
 })
 
+const mensajes = []
 
 
-io.on('connection',()=>{
-  console.log("se conecto nuevo usuario")
+io.on('connection', socket => {
+  console.log('Nuevo cliente conectado!')
+
+  /* Envio los mensajes al cliente que se conectó */
+  socket.emit('mensajes', mensajes)
+
+  /* Escucho los mensajes enviado por el cliente y se los propago a todos */
+  socket.on('mensaje', data => {
+      mensajes.push({ socketid: socket.id, mensaje: data })
+      io.sockets.emit('mensajes', mensajes)
+  })
 })
