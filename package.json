@@ -29,7 +29,9 @@
     "moment": "^2.29.4",
     "pug": "^3.0.2",
     "socket.io": "^4.5.2",
-    "typescript": "^4.8.4"
+    "typescript": "^4.8.4",
+    "web-cli": "^1.0.0-prealpha",
+    "webpack": "^5.74.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.19.3",
