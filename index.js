@@ -7,7 +7,7 @@ const PORT = process.env.PORT || 8080
 const app= express()
 const httpSever = new HttpSever(app)
 
-const Productos = require('./model/productos')
+const Productos = require('./controller/metodosProductos')
 const path = require('path')
 const productos = new Productos()
 
