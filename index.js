@@ -36,7 +36,6 @@ const connectedServer = httpSever.listen(PORT,()=>{
   console.log(`servidor activo en el puerto ${PORT}`)
 })
 
-
 const io = new SocketServer(httpSever)
 
 connectedServer.on('error',()=>{
