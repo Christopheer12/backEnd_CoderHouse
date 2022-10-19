@@ -1,1 +1,21 @@
 1:40
+
+
+Comandos Mysql
+(";") EL ; ES MUY importante en MySql al finalizar una accion
+inicio de MySql: mysql -u root
+mostrar bases: SHOW DATABASES;
+Crear: CREATE
+Crear una base de datos: CREATE DATABASE + nombre en minuscula ( CREATE DATABASE demotest;)
+
+Para usar una base usamo es comado: USE + el numbre de la base (USE demotest;)
+
+COMO USAR LAS QUERIES:
+
+para crear una tabla usamos el xomando CREATE TABLE <nombre-de-la-tabla> y en los () ponemos 
+el numeros de colimnas de esa tabla ejemplo: 
+CREATE TABLE <tabla-test>(
+    id col_1 tipo_col_1,
+    col_2 tipo_col_2
+); 
+IMPORTANTE NO OLVIDEMOS LOS ;
